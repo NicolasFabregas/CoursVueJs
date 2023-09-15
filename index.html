@@ -25,8 +25,10 @@
     
 </style>
 <body>
-    <div id="mon-app">
+    
+    <div id="mon-app1">
         <h1>Vue JS Cours</h1>
+        <p>{{txt}}</p>
         <!-- <button v-on:click="toggleColor=!toggleColor">change color</button> -->
         <button v-on:click="toggleBox=!toggleBox">change color</button>
         <!-- <div v-if="toggleBox" class="box red"></div>
@@ -80,7 +82,7 @@
         <!-- <ul>
             <li v-for="n in tableau">{{n}}</li>
         </ul> -->
-        <ul>
+        <!-- <ul>
             <li v-for="(fruit, index) in tableauFruits">{{index}}:{{fruit}}</li>
         </ul>
         <ul>
@@ -92,7 +94,12 @@
                     {{props}} : {{val}}
                 </div>
             </li>
-        </ul>
+        </ul> -->
+    </div>
+    <div id="mon-app2">
+        <h1>Vue JS Cours</h1>
+        <p>{{txt}}</p>
+        <button v-on:click="func1">changer</button>
     </div>
 
 
@@ -101,13 +108,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <script>
-        new Vue({
-            el: '#mon-app',
+        const ins1=new Vue({
+            el: '#mon-app1',
             data:{
+                txt:"Hello App1",
                 // tableau:[1,2,3,4,5],
-                tableauFruits:["fraise", "pomme", "poire"],
+                // tableauFruits:["fraise", "pomme", "poire"],
                 toggleBox : false,
-                objChat:{ race:'persan', age:3, poids:"5kg"},
+                // objChat:{ race:'persan', age:3, poids:"5kg"},
                 listObjChat:[
                     { race:'persan', age:3, poids:"5kg"},
                     { race:'tralou', age:1, poids:"6 livres"},
@@ -185,6 +193,24 @@
             //     },
             }
         })
+
+        const ins2=new Vue({
+            el: '#mon-app2',
+            data:{
+                txt:"Hello App2",
+            },
+            methods : {
+                func1:function(){
+                    ins1.txt="je t'ai changé"
+                }
+            },
+            watch:{
+            },
+            computed:{
+            }
+        })
+        console.log(ins1.txt);
+
 
     </script>
 </body>
