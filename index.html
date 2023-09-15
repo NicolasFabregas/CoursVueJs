@@ -32,7 +32,9 @@
         </form>
 
         <p>ton nom</p>
-        <input type="text" v-on:keyup.enter="inpFunction">
+        <!-- <input type="text" v-on:keyup="inpFunction"> -->
+        <input type="text" v-model="valeur">
+        <p>{{valeur}}</p>
 
     </div>
 
@@ -48,6 +50,7 @@
                 cpt:0,
                 x:0,
                 y:0,
+                valeur:"",
             },
             methods : {
                 augmente:function(){
@@ -71,8 +74,10 @@
                     console.log("submit");
                     e.preventDefault();//pareil que submit.prevent en html
                 },
-                inpFunction : function(){
+                inpFunction : function(e){
                     console.log("appuyé sur une touche");
+                    this.valeur=e.target.value;
+                    console.log(this.valeur);
                 }
             }
         })
