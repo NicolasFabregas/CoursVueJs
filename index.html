@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    canvas{
+        width: 300px;
+        height: 200px;
+        border: 1px solid black;
+    }
+    
+</style>
 <body>
     <div id="mon-app">
         <h1>Vue JS Cours</h1>
-        <p>{{ txt }}</p>
-        <p>{{ sum(1,6) }}</p>
-        <p>{{ presentation() }}</p>
-        <a :href="urlVueJs">le site de vue js</a>
-        <img :src="urlImg">le site de vue js</a>
+        <button v-on:click="augmente">augmente</button>
+        <button v-on:click="diminue">diminue</button>
+        <h2>Compteur : {{cpt}}</h2>
+        <canvas v-on:mousemove="coords"></canvas>
+        <p>{{x}} /{{y}}</p>
     </div>
 
 
@@ -23,18 +31,21 @@
         new Vue({
             el: '#mon-app',
             data:{
-                txt:'Hello World',
-                nb: 10,
-                urlVueJs:'https://vuejs.org/guide/quick-start.html',
-                urlImg:'https://plus.unsplash.com/premium_photo-1670032860789-072a3e4a8eb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80',
+                cpt:0,
+                x:0,
+                y:0,
             },
             methods : {
-                sum: function(a, b){
-                    return a+b;
+                augmente:function(){
+                    this.cpt++;
                 },
-                presentation: function(){
-                    // return 'Bonjour je suis Nico'
-                    return this.txt+this.nb;
+                diminue:function(){
+                    this.cpt--;
+                },
+                coords:function(e){
+                    console.log(e);
+                    this.x=e.offsetX;
+                    this.y=e.offsetY;
                 }
             }
         })
