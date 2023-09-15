@@ -29,12 +29,12 @@
         <h1>Vue JS Cours</h1>
         <!-- <button v-on:click="toggleColor=!toggleColor">change color</button> -->
         <button v-on:click="toggleBox=!toggleBox">change color</button>
-        <div v-if="toggleBox" class="box red"></div>
+        <!-- <div v-if="toggleBox" class="box red"></div>
         <div v-else="toggleBox" class="">sinon</div>
         <p v-if="num===1">valeur est 1</p>
         <p v-else-if="num===2">valeur est 2</p>
         <p v-else-if="num===3">valeur est 3</p>
-        <p v-else>valeur est autre</p>
+        <p v-else>valeur est autre</p> -->
         <!-- <div v-bind:class="[objCSS, toggleColor?'bordure':'']"></div> -->
 
         <!-- <button @click="cptA++">augmente</button>
@@ -72,6 +72,11 @@
         <!-- <p :style="monStyle">lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores,
             recusandae
         </p> -->
+        <template v-if="toggleBox">
+            <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
+            <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
+            <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
+        </template>
     </div>
 
 
