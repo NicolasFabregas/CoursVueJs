@@ -72,11 +72,14 @@
         <!-- <p :style="monStyle">lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores,
             recusandae
         </p> -->
-        <template v-if="toggleBox">
+        <!-- <template v-if="toggleBox">
             <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
             <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
             <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
-        </template>
+        </template> -->
+        <ul>
+            <li v-for="n in tableau">{{n}}</li>
+        </ul>
     </div>
 
 
@@ -88,8 +91,9 @@
         new Vue({
             el: '#mon-app',
             data:{
+                tableau:[1,2,3,4,5],
                 toggleBox : false,
-                num:2,
+                // num:2,
                 // toggleColor : false,
                 // color:'lightblue',
                 // width:200
