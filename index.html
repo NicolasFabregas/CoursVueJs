@@ -16,11 +16,18 @@
 <body>
     <div id="mon-app">
         <h1>Vue JS Cours</h1>
+        <button @click="cptA++">augmente</button>
+        <button @click="cptA--">diminue</button>
+        <h2>Compteur : {{cptA}}</h2>
+        <p>{{checkVal()}} |||| {{memo}}</p>
+
+
+        <button v-on:click="cptB++">augmenteB</button>
+        <button v-on:click="cptB--">diminueB</button>
+        <h2>Compteur : {{cptB}}</h2>
+        <!-- 
         <button v-on:click="augmente">augmente</button>
-        <button v-on:click="cpt++">augmente</button>
         <button v-on:click="diminue">diminue</button>
-        <button v-on:click="cpt--">diminue</button>
-        <h2>Compteur : {{cpt}}</h2>
         <h3>{{cpt?'il est true': 'il est false'}}</h3>
         <canvas v-on:mousemove="coords"></canvas>
         <p>{{x}} /{{y}}</p>
@@ -38,9 +45,9 @@
         <input type="text" v-on:keyup="inpFunction">
         <input type="text" v-model="valeur">
         <p>{{valeur}}</p>
-        <p v-html="htmlBrut">{{htmlBrut}}</p>
+        <p v-html="htmlBrut">{{htmlBrut}}</p> -->
 
-
+        <a :href="cptA"></a>
     </div>
 
 
@@ -52,39 +59,59 @@
         new Vue({
             el: '#mon-app',
             data:{
-                cpt:0,
-                x:0,
-                y:0,
-                valeur:"",
-                htmlBrut:"<p>Mon HTML Brut</p>",
+                cptA:0,
+                cptB:0,
+                // x:0,
+                // y:0,
+                // valeur:"",
+                // htmlBrut:"<p>Mon HTML Brut</p>",
             },
             methods : {
-                augmente:function(){
-                    this.cpt++;
+                // augmente:function(){
+                //     this.cptA++;
+                // },
+                // diminue:function(){
+                //     this.cptA--;
+                // },
+                checkVal:function(){
+                    console.log("la fonction a été lancée");
+                    return this.cptA>10?'supérieur à 10':'inférieur/égal à 10'
                 },
-                diminue:function(){
-                    this.cpt--;
+                // coords:function(e){
+                //     console.log(e);
+                //     this.x=e.offsetX;
+                //     this.y=e.offsetY;
+                // },
+                // foo : function(){
+                //     console.log("cliqué");
+                // },
+                // foo1 : function(){
+                //     console.log("cliqué1");
+                // },
+                // onSubmit : function(e){
+                //     console.log("submit");
+                //     e.preventDefault();//pareil que submit.prevent en html
+                // },
+                // inpFunction : function(e){
+                //     console.log("appuyé sur une touche");
+                //     this.valeur=e.target.value;
+                //     console.log(this.valeur);
+                // }
+            },
+            watch:{
+                cptA:function(){
+                    console.log("Prop update");
+                    var ctx=this;
+                    setTimeout(function(){
+                        ctx.cptA=0;
+                    }, 1500)//affecte 0 au compteur au bout de 1.5 secondes
                 },
-                coords:function(e){
-                    console.log(e);
-                    this.x=e.offsetX;
-                    this.y=e.offsetY;
+            },
+            computed:{
+                memo:function(){
+                    console.log("MEMO lancé");
+                    return this.cptA>10?'supérieur à 10':'inférieur/égal à 10'
                 },
-                foo : function(){
-                    console.log("cliqué");
-                },
-                foo1 : function(){
-                    console.log("cliqué1");
-                },
-                onSubmit : function(e){
-                    console.log("submit");
-                    e.preventDefault();//pareil que submit.prevent en html
-                },
-                inpFunction : function(e){
-                    console.log("appuyé sur une touche");
-                    this.valeur=e.target.value;
-                    console.log(this.valeur);
-                }
             }
         })
 
