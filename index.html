@@ -17,8 +17,11 @@
     <div id="mon-app">
         <h1>Vue JS Cours</h1>
         <button v-on:click="augmente">augmente</button>
+        <button v-on:click="cpt++">augmente</button>
         <button v-on:click="diminue">diminue</button>
+        <button v-on:click="cpt--">diminue</button>
         <h2>Compteur : {{cpt}}</h2>
+        <h3>{{cpt?'il est true': 'il est false'}}</h3>
         <canvas v-on:mousemove="coords"></canvas>
         <p>{{x}} /{{y}}</p>
         <button v-on:click.once="foo">clique moi une fois</button>
@@ -32,9 +35,11 @@
         </form>
 
         <p>ton nom</p>
-        <!-- <input type="text" v-on:keyup="inpFunction"> -->
+        <input type="text" v-on:keyup="inpFunction">
         <input type="text" v-model="valeur">
         <p>{{valeur}}</p>
+        <p v-html="htmlBrut">{{htmlBrut}}</p>
+
 
     </div>
 
@@ -51,6 +56,7 @@
                 x:0,
                 y:0,
                 valeur:"",
+                htmlBrut:"<p>Mon HTML Brut</p>",
             },
             methods : {
                 augmente:function(){
