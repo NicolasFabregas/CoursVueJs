@@ -11,12 +11,26 @@
         height: 200px;
         border: 1px solid black;
     }
+    .box{
+        width: 250px;
+        height: 250px;
+        border: 1px solid black;
+    }
+    .red{
+        background: crimson;
+    }
+    .bordure{
+        border: 10px solid black;
+    }
     
 </style>
 <body>
     <div id="mon-app">
         <h1>Vue JS Cours</h1>
-        <button @click="cptA++">augmente</button>
+        <button v-on:click="toggleColor=!toggleColor">change color</button>
+        <div v-bind:class="[objCSS, toggleColor?'bordure':'']"></div>
+
+        <!-- <button @click="cptA++">augmente</button>
         <button @click="cptA--">diminue</button>
         <h2>Compteur : {{cptA}}</h2>
         <p>{{checkVal()}} |||| {{memo}}</p>
@@ -24,7 +38,7 @@
 
         <button v-on:click="cptB++">augmenteB</button>
         <button v-on:click="cptB--">diminueB</button>
-        <h2>Compteur : {{cptB}}</h2>
+        <h2>Compteur : {{cptB}}</h2> -->
         <!-- 
         <button v-on:click="augmente">augmente</button>
         <button v-on:click="diminue">diminue</button>
@@ -47,7 +61,7 @@
         <p>{{valeur}}</p>
         <p v-html="htmlBrut">{{htmlBrut}}</p> -->
 
-        <a :href="cptA"></a>
+        <!-- <a :href="cptA"></a> -->
     </div>
 
 
@@ -59,8 +73,9 @@
         new Vue({
             el: '#mon-app',
             data:{
-                cptA:0,
-                cptB:0,
+                toggleColor : false,
+                // cptA:0,
+                // cptB:0,
                 // x:0,
                 // y:0,
                 // valeur:"",
@@ -73,10 +88,10 @@
                 // diminue:function(){
                 //     this.cptA--;
                 // },
-                checkVal:function(){
-                    console.log("la fonction a été lancée");
-                    return this.cptA>10?'supérieur à 10':'inférieur/égal à 10'
-                },
+                // checkVal:function(){
+                //     console.log("la fonction a été lancée");
+                //     return this.cptA>10?'supérieur à 10':'inférieur/égal à 10'
+                // },
                 // coords:function(e){
                 //     console.log(e);
                 //     this.x=e.offsetX;
@@ -99,19 +114,25 @@
                 // }
             },
             watch:{
-                cptA:function(){
-                    console.log("Prop update");
-                    var ctx=this;
-                    setTimeout(function(){
-                        ctx.cptA=0;
-                    }, 1500)//affecte 0 au compteur au bout de 1.5 secondes
-                },
+            //     cptA:function(){
+            //         console.log("Prop update");
+            //         var ctx=this;
+            //         setTimeout(function(){
+            //             ctx.cptA=0;
+            //         }, 1500)//affecte 0 au compteur au bout de 1.5 secondes
+            //     },
             },
             computed:{
-                memo:function(){
-                    console.log("MEMO lancé");
-                    return this.cptA>10?'supérieur à 10':'inférieur/égal à 10'
-                },
+                objCSS:function(){
+                    return{
+                    red:this.toggleColor,
+                    box:true,
+                    }
+                }
+            //     memo:function(){
+            //         console.log("MEMO lancé");
+            //         return this.cptA>10?'supérieur à 10':'inférieur/égal à 10'
+            //     },
             }
         })
 
