@@ -77,8 +77,21 @@
             <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
             <p> lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, recusandae </p>
         </template> -->
-        <ul>
+        <!-- <ul>
             <li v-for="n in tableau">{{n}}</li>
+        </ul> -->
+        <ul>
+            <li v-for="(fruit, index) in tableauFruits">{{index}}:{{fruit}}</li>
+        </ul>
+        <ul>
+            <li v-for="(val, props) in objChat">{{props}} : {{val}}</li>
+        </ul>
+        <ul>
+            <li v-for="obj in listObjChat">
+                <div v-for="(val, props) in obj">
+                    {{props}} : {{val}}
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -91,8 +104,16 @@
         new Vue({
             el: '#mon-app',
             data:{
-                tableau:[1,2,3,4,5],
+                // tableau:[1,2,3,4,5],
+                tableauFruits:["fraise", "pomme", "poire"],
                 toggleBox : false,
+                objChat:{ race:'persan', age:3, poids:"5kg"},
+                listObjChat:[
+                    { race:'persan', age:3, poids:"5kg"},
+                    { race:'tralou', age:1, poids:"6 livres"},
+                    { race:'azer', age:2, poids:"1300g"},
+                    { race:'poiu', age:4, poids:"12 livres"},
+                ],
                 // num:2,
                 // toggleColor : false,
                 // color:'lightblue',
