@@ -21,6 +21,15 @@
         <h2>Compteur : {{cpt}}</h2>
         <canvas v-on:mousemove="coords"></canvas>
         <p>{{x}} /{{y}}</p>
+        <button v-on:click.once="foo">clique moi une fois</button>
+        <div>
+            <p v-on:click="foo">lorem ipsum
+                <button v-on:click.stop="foo">clique moi</button>
+            </p>
+        </div>
+        <form v-on:submit.prevent="onSubmit">
+            <button>Valider</button>
+        </form>
     </div>
 
 
@@ -46,6 +55,16 @@
                     console.log(e);
                     this.x=e.offsetX;
                     this.y=e.offsetY;
+                },
+                foo : function(){
+                    console.log("cliqué");
+                },
+                foo1 : function(){
+                    console.log("cliqué1");
+                },
+                onSubmit : function(e){
+                    console.log("submit");
+                    e.preventDefault();//pareil que submit.prevent en html
                 }
             }
         })
